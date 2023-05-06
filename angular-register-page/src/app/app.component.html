@@ -1,3 +1,55 @@
 
-<app-register></app-register>
-<router-outlet></router-outlet>
+<!-- <app-register></app-register> -->
+<!-- <router-outlet></router-outlet> -->
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+    <div>
+      <label>
+        Username:
+        <input formControlName="username" placeholder="Your username">
+      </label>
+      <div *ngIf="myForm.get('username').invalid && (myForm.get('username').dirty || myForm.get('username').touched)">
+        Please provide a username.
+      </div>
+    </div>
+    <div>
+      <label>
+        Email:
+        <input formControlName="email" placeholder="Your email">
+      </label>
+      <div *ngIf="myForm.get('email').invalid && (myForm.get('email').dirty || myForm.get('email').touched)">
+        Please provide a valid email address.
+      </div>
+    </div>
+    <div>
+      <label>
+        password:
+        <input formControlName="password" placeholder="password">
+      </label>
+      <div *ngIf="myForm.get('password').invalid && (myForm.get('password').dirty || myForm.get('password').touched)">
+        Enter password must be at least 15 characters long.
+      </div>
+    </div>
+
+    <div>
+        <label>
+          confirm password:
+          <input formControlName="confirm password" placeholder="confirm password">
+        </label>
+        <div *ngIf="myForm.get('confirm password').invalid && (myForm.get('confirm password').dirty || myForm.get('confirm password').touched)">
+            confirm entered password.
+        </div>
+      </div>
+      <div>
+
+        <div>
+            <label>
+              Message:
+              <input formControlName="message" placeholder="Your message">
+            </label>
+            <div *ngIf="myForm.get('message').invalid && (myForm.get('message').dirty || myForm.get('message').touched)">
+              Messages must be at least 15 characters long.
+            </div>
+          </div>
+    <button type="submit" [disabled]="myForm.invalid">Send</button>
+  <!-- </form> -->
